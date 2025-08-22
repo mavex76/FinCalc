@@ -25,3 +25,8 @@ npm run build
 - Registration: in `src/main.jsx`
 
 Su Netlify non serve configurazione extra.
+
+
+## Calcolo rapido
+- Campo espressione con parser sicuro (niente `eval`).
+- Supporta `+ - * / ( )`, virgola o punto come decimale, `=` iniziale opzionale.
