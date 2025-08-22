@@ -31,7 +31,7 @@ function Header() {
     <header className='sticky top-0 z-10 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/95 border-b border-neutral-200'>
       <div className='mx-auto max-w-md px-4 py-4'>
         <h1 className='text-2xl font-medium tracking-tight'>Calcolatrice Finanziaria</h1>
-        <p className='text-sm text-neutral-600'>Elegante. Minimal. Mobile-first.</p>
+        <p className='text-sm text-neutral-600 dark:text-neutral-300'>Elegante. Minimal. Mobile-first.</p>
       </div>
     </header>
   )
@@ -40,7 +40,7 @@ function Header() {
 function Footer() {
   return (
     <footer className='fixed bottom-0 left-0 right-0 border-t border-neutral-200 bg-white/95 backdrop-blur'>
-      <div className='mx-auto max-w-md px-4 py-3 text-center text-xs text-neutral-600'>
+      <div className='mx-auto max-w-md px-4 py-3 text-center text-xs text-neutral-600 dark:text-neutral-300'>
         Prototipo – Usa con cautela. Controlla sempre i risultati.
       </div>
     </footer>
@@ -51,7 +51,7 @@ function Section({ title, subtitle, children }) {
   return (
     <section className='py-6'>
       <h2 className='text-xl font-medium tracking-tight'>{title}</h2>
-      {subtitle && <p className='mt-1 text-sm text-neutral-600'>{subtitle}</p>}
+      {subtitle && <p className='mt-1 text-sm text-neutral-600 dark:text-neutral-300'>{subtitle}</p>}
       <div className='mt-4 space-y-4'>{children}</div>
     </section>
   )
@@ -284,7 +284,7 @@ function Card({ children }) {return (<div className='rounded-2xl border border-n
 function ToggleGroup({ value, onChange, options }) {
   return (<div className='inline-grid grid-cols-2 rounded-xl border border-neutral-200 p-1 bg-neutral-50'>
     {options.map((opt) => {const active = value === opt.value; return (
-      <button key={opt.value} onClick={() => onChange(opt.value)} className={'px-4 py-2 text-sm font-medium rounded-lg transition ' + (active ? 'bg-white shadow-sm border border-neutral-200' : 'text-neutral-600')} aria-pressed={active}>{opt.label}</button>)})}
+      <button key={opt.value} onClick={() => onChange(opt.value)} className={'px-4 py-2 text-sm font-medium rounded-lg transition ' + (active ? 'bg-white shadow-sm border border-neutral-200' : 'text-neutral-600 dark:text-neutral-300')} aria-pressed={active}>{opt.label}</button>)})}
   </div>)}
 function LabeledInput({ id, label, value, onChange, placeholder, hint, inputMode = 'decimal' }) {
   return (<div>
@@ -292,8 +292,8 @@ function LabeledInput({ id, label, value, onChange, placeholder, hint, inputMode
     <input id={id} className='w-full text-2xl leading-tight tracking-tight px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-4 focus:ring-neutral-200 focus:border-neutral-400 placeholder-neutral-400' value={value} onChange={(e) => onChange(e.target.value)} inputMode={inputMode} placeholder={placeholder} autoComplete='off' />
     {hint && <Small>{hint}</Small>}
   </div>)}
-function KPI({ label, value }) {return (<div className='rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-center'><div className='text-xs text-neutral-600'>{label}</div><div className='mt-1 text-lg font-medium tabular-nums'>{value}</div></div>)}
-function Small({ children, muted }) {return (<p className={'mt-2 text-xs ' + (muted ? 'text-neutral-400' : 'text-neutral-600')}>{children}</p>)}
+function KPI({ label, value }) {return (<div className='rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-center'><div className='text-xs text-neutral-600 dark:text-neutral-300'>{label}</div><div className='mt-1 text-lg font-medium tabular-nums'>{value}</div></div>)}
+function Small({ children, muted }) {return (<p className={'mt-2 text-xs ' + (muted ? 'text-neutral-400' : 'text-neutral-600 dark:text-neutral-300')}>{children}</p>)}
 
 // Utils
 function parseLocaleNumber(input) {if (input == null) return NaN;if (typeof input === 'number') return input;const s = String(input).trim().replace(/\s+/g, '');if (!s) return NaN;const lastComma = s.lastIndexOf(',');const lastDot = s.lastIndexOf('.');let normalized = s.replace(/[^0-9,\.\-]/g, '');if (lastComma > lastDot) {normalized = normalized.replace(/\./g, '').replace(',', '.')} else if (lastDot > lastComma) {normalized = normalized.replace(/,/g, '')} else {normalized = normalized.replace(',', '.')}return Number(normalized)}
